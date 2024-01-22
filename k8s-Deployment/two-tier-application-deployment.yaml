@@ -19,7 +19,7 @@ spec:
           image: 'nahid0002/flask-app:latest'
           env:
             - name: MYSQL_HOST
-              value: "10.101.141.26"          # this is your mysql's service clusture IP, Make sure to change it with yours
+              value: "10.101.141.26"  #mysql
             - name: MYSQL_PASSWORD
               value: "admin"
             - name: MYSQL_USER
@@ -29,3 +29,18 @@ spec:
           ports:
             - containerPort: 5000
           imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: two-tier-app-service
+spec:
+  selector:
+    app: two-tier-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+      nodePort: 30007
+  type: NodePort

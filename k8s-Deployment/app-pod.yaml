@@ -8,13 +8,13 @@ spec:
       image: nahid0002/flask-app:latest
       env:
         - name: MYSQL_HOST
-          value: mysql
+          value: "10.101.141.26" #mysql
         - name: MYSQL_PASSWORD
-          value: admin
+          value: "admin"
         - name: MYSQL_USER
-          value: admin
+          value: "root"
         - name: MYSQL_DB
-          value: myDb
+          value: "mydb"
       ports:
         - containerPort: 5000
       imagePullPolicy: Always
